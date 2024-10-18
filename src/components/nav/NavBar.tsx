@@ -23,24 +23,24 @@ function NavBar({updateCallback}: { updateCallback: Function }) {
                     </div>
 
                     <div className="nav-icon-container" onClick={() => updateCallback(0)}>
-                        <HeartIcon className="nav-icon"/>
+                        <HeartIcon className="icon"/>
                     </div>
 
                     <div className="nav-icon-container" onClick={() => updateCallback(1)}>
-                        <UserIcon className="nav-icon"/>
+                        <UserIcon className="icon"/>
                     </div>
 
                     {/* TODO Chat should exist in mobile context */}
                     <div className="nav-icon-container " onClick={() => updateCallback(2)}>
-                        <ChatBubbleLeftRightIcon className="nav-icon"/>
+                        <ChatBubbleLeftRightIcon className="icon"/>
                     </div>
 
                     <div className="nav-icon-container" onClick={() => updateCallback(3)}>
-                        <AdjustmentsHorizontalIcon className="nav-icon"/>
+                        <AdjustmentsHorizontalIcon className="icon"/>
                     </div>
 
                     <div className="nav-icon-container" onClick={() => updateCallback(4)}>
-                        <ChartBarIcon className="nav-icon"/>
+                        <ChartBarIcon className="icon"/>
                     </div>
 
                 </div>

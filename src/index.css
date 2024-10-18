@@ -2,10 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
-.nav-icon {
+.icon {
     @apply px-1 w-full h-full;
 }
 
 .nav-icon-container {
     @apply border-b-2 border-primary hover:border-primary-dark text-primary hover:text-primary-dark cursor-pointer;
+}
+
+.feed-icon-container {
+    @apply border-4 rounded-full cursor-pointer h-28 w-28;
 }
