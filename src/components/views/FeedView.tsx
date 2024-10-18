@@ -1,6 +1,6 @@
 import ViewWrapper from "../util/ViewWrapper.tsx";
 
-import sample1 from "../../assets/img/sample1.jpg"
+import sample1 from "../../assets/img/sample2.jpg"
 import {HandThumbDownIcon, HandThumbUpIcon} from "@heroicons/react/24/solid";
 
 function FeedView() {

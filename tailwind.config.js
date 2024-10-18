@@ -11,8 +11,10 @@ export default {
                 "primary-light": "#C39BD3",
                 "primary-dark": "#512E5F",
                 "divider": "#000000",
-                "light": "#ffffff",
-                "dark": "#000000"
+                "light": "#F9F9F9",
+                "light-dark": "#EEEEEE",
+                "dark": "#1E1E1E",
+                "dark-light": "#3C3C3C"
             }
         },
     },
