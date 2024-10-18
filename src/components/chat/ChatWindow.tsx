@@ -3,7 +3,7 @@ import {ArrowLeftCircleIcon} from "@heroicons/react/24/outline";
 
 import RoundImage from "../util/RoundImage.tsx";
 
-function Pill({image, title, close}: { title: string, image: string, close: any }) {
+function ChatWindow({image, title, close}: { title: string, image: string, close: any }) {
 
     return (
         <div className="w-full h-full flex flex-col">
@@ -36,4 +36,4 @@ function Pill({image, title, close}: { title: string, image: string, close: any 
     )
 }
 
-export default Pill
+export default ChatWindow
