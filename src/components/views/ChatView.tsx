@@ -32,15 +32,15 @@ function ChatView() {
                         <h1>Who likes you!</h1>
                         <div className="w-full flex gap-2 py-2 text-center font-semibold">
 
-                            <div>
+                            <div className="cursor-pointer">
                                 <RoundImage image={square2}/>
                                 <span>Jim</span>
                             </div>
-                            <div>
+                            <div className="cursor-pointer">
                                 <RoundImage image={square3}/>
                                 <span>Pam</span>
                             </div>
-                            <div>
+                            <div className="cursor-pointer">
                                 <RoundImage image={square4}/>
                                 <span>Micheal</span>
                             </div>

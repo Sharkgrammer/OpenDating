@@ -13,9 +13,9 @@ function Pill({image, title, close}: { title: string, image: string, close: any 
                 <ArrowLeftCircleIcon className="h-20 w-20 cursor-pointer text-primary hover:text-primary-dark"
                                      onClick={close}/>
 
-                <RoundImage image={image} size="h-16 w-16" className="cursor-pointer"/>
+                <RoundImage image={image} size="h-20 w-20" className="cursor-pointer"/>
 
-                <h1 className="h-fit w-full">Chat with {title}</h1>
+                <h1 className="h-fit w-full border-0">{title}</h1>
             </div>
 
 

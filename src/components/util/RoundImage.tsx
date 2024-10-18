@@ -14,7 +14,9 @@ function RoundImage({image, size = "medium", className}: { image: string, size?:
     }
 
     return (
-        <img src={image} className={`rounded-full pointer-events-none ${getSize()} ${className}`}/>
+        <div className={`${getSize()} ${className} flex items-center`}>
+            <img src={image} className="rounded-full pointer-events-none"/>
+        </div>
     )
 }
 
