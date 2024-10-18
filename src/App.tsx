@@ -16,31 +16,33 @@ function App() {
     }
 
     return (
-        <div className="h-screen w-screen flex">
+        <div className="h-screen w-screen flex justify-center bg-light">
 
-            <div className="w-fit h-full">
-                <NavBar updateCallback={NavBarCallback}/>
-            </div>
+            <div className="w-[100%] h-full flex">
+                <div className="w-fit h-full">
+                    <NavBar updateCallback={NavBarCallback}/>
+                </div>
 
-            <div className="w-full h-full flex-grow grid grid-cols-2">
+                <div className="w-full h-full flex-grow grid grid-cols-2">
 
-                {view == 0 && (
-                    <FeedView/>
-                ) || view == 1 && (
-                    <ProfileView/>
-                ) || view == 2 && (
-                    <ChatView/>
-                ) || view == 3 && (
-                    <PrefView/>
-                ) || view == 4 && (
-                    <StatView/>
-                )}
+                    {view == 0 && (
+                        <FeedView/>
+                    ) || view == 1 && (
+                        <ProfileView/>
+                    ) || view == 2 && (
+                        <ChatView/>
+                    ) || view == 3 && (
+                        <PrefView/>
+                    ) || view == 4 && (
+                        <StatView/>
+                    )}
 
-                {/* TODO chat should be hidden in mobile */}
-                {(
-                    <ChatView/>
-                )}
+                    {/* TODO chat should be hidden in mobile */}
+                    {(
+                        <ChatView/>
+                    )}
 
+                </div>
             </div>
 
         </div>

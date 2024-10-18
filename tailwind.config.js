@@ -10,7 +10,9 @@ export default {
                 "primary": "#7D3C98",
                 "primary-light": "#C39BD3",
                 "primary-dark": "#512E5F",
-                "divider": "#000000"
+                "divider": "#000000",
+                "light": "#ffffff",
+                "dark": "#000000"
             }
         },
     },
