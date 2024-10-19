@@ -1,3 +1,5 @@
+import {redirect} from "react-router-dom";
+
 // Taken from mozilla docs
 export function getCookie(name: string) {
     let cookieValue = null;
@@ -66,7 +68,7 @@ export function getLocalUID() {
 export async function redirectToLogin() {
     localStorage.clear();
 
-    await router.push({name: 'Login'})
+    return redirect("/login");
 }
 
 export async function logout() {
