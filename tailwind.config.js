@@ -15,6 +15,14 @@ export default {
                 "light-dark": "#EEEEEE",
                 "dark": "#1E1E1E",
                 "dark-light": "#3C3C3C"
+            },
+            maxWidth: {
+                "1/2": "50%",
+                "2/3": "66.6666%"
+            },
+            maxHeight: {
+                "1/2": "50%",
+                "2/3": "66.6666%"
             }
         },
     },

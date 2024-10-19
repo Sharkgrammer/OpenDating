@@ -25,8 +25,7 @@ function ChatWindow({image, title, close}: { title: string, image: string, close
 
             <div className="flex items-center p-2">
 
-                <input className="w-full py-1 px-2 bg-light border outline-0 border-primary rounded-2xl h-12"
-                       placeholder="Say something here!" type="text"/>
+                <input className="h-12" placeholder="Say something here!" type="text"/>
 
                 <PaperAirplaneIcon className="h-14 text-primary hover:text-primary-dark cursor-pointer"/>
 
