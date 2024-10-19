@@ -1,10 +1,19 @@
 import ViewWrapper from "../util/ViewWrapper.tsx";
+import InterestPicker from "../util/InterestPicker.tsx";
 
 function PrefView() {
 
     return (
         <ViewWrapper>
-            Pref
+
+            <div className="h-full w-full">
+
+                <h1>Who are you looking for?</h1>
+
+                <InterestPicker />
+
+            </div>
+
         </ViewWrapper>
     )
 }
