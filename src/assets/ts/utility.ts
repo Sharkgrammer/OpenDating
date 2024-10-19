@@ -1,4 +1,4 @@
-import {redirect} from "react-router-dom";
+import {router} from "../../Router.tsx";
 
 // Taken from mozilla docs
 export function getCookie(name: string) {
@@ -66,13 +66,11 @@ export function getLocalUID() {
 }
 
 export async function redirectToLogin() {
-    localStorage.clear();
-
-    return redirect("/login");
+    await router.navigate("/login", {replace: true});
 }
 
 export async function logout() {
-    setAccessKey("");
+    console.log("Logout ran");
     localStorage.clear()
 
     await redirectToLogin();

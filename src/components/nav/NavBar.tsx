@@ -3,8 +3,10 @@ import {
     Bars3Icon,
     ChartBarIcon,
     ChatBubbleLeftRightIcon, HeartIcon,
-    UserIcon
+    UserIcon,
+    ArrowLeftEndOnRectangleIcon
 } from "@heroicons/react/24/solid";
+import {logout} from "../../assets/ts/utility.ts";
 
 function NavBar({updateCallback}: { updateCallback: Function }) {
 
@@ -41,6 +43,10 @@ function NavBar({updateCallback}: { updateCallback: Function }) {
 
                     <div className="nav-icon-container" onClick={() => updateCallback(4)}>
                         <ChartBarIcon className="icon"/>
+                    </div>
+
+                    <div className="nav-icon-container" onClick={() => logout()}>
+                        <ArrowLeftEndOnRectangleIcon className="icon"/>
                     </div>
 
                 </div>

@@ -79,19 +79,20 @@ export async function checkStatus(status: number, data: any) {
 }
 
 export async function NetworkRequest(urlEnd: string, type: string = "GET", body: any = null, params: any = null, isJSON: boolean = true, skipLogin: boolean = false) {
-    let url = `${import.meta.env.VITE_BACKEND_API}/${urlEnd}/`;
+    let url = `${import.meta.env.VITE_BACKEND_API}/${urlEnd}`;
 
     if (params === null) params = "{}";
     if (body === null) body = "{}";
 
-    let input: string = url + utils.params(params)
+    let input: string = `${url}${utils.params(params)}`;
+
     let init: any = {
         "method": type,
         "headers": {}
     }
 
     if (!skipLogin) {
-        init.headers["Authorization"] = 'Bearer ' + utils.getAccessKey()
+        init.headers["Authorization"] = 'Bearer ' + utils.getAccessKey();
     }
 
     switch (type) {
@@ -99,11 +100,11 @@ export async function NetworkRequest(urlEnd: string, type: string = "GET", body:
             // Nothing here yet
             break;
         case "PUT":
-            init.headers["Content-Disposition"] = "attachment"
-            init.body = body
+            init.headers["Content-Disposition"] = "attachment";
+            init.body = body;
             break
         case "POST":
-            init.body = JSON.stringify(body)
+            init.body = JSON.stringify(body);
             break;
     }
 
@@ -128,9 +129,9 @@ export async function NetworkRequest(urlEnd: string, type: string = "GET", body:
         return false;
     }
 
-    if (result) {
-        return await NetworkRequest(urlEnd, type, body, params, isJSON)
+    if (!result) {
+        return await NetworkRequest(urlEnd, type, body, params, isJSON);
     } else {
-        return result
+        return result;
     }
 }
