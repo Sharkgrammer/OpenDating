@@ -1,36 +1,38 @@
 import Pill from "./Pill.tsx";
+import {useEffect, useState} from "react";
+import {InterestCategory, InterestCategoryDefault} from "../../types/InterestCategory.tsx";
+import * as network from "../../assets/ts/network.ts";
 
-function InterestPicker() {
+function InterestPicker({editable}: { editable: boolean }) {
+
+    const [interestData, setInterestData] = useState<InterestCategory[]>(InterestCategoryDefault)
+
+    async function getInterestCategories() {
+        let data: any = await network.NetworkRequest("interest", "GET");
+
+        if (data) {
+            setInterestData(data);
+        }
+    }
+
+    useEffect(() => {
+        getInterestCategories().then();
+    }, [])
+
 
     return (
         <div className="h-fit w-full grid grid-cols-1 gap-1">
 
-            <div>
-                <h5>Books</h5>
-                <div className="flex gap-1 flex-wrap">
-                    <Pill text="Fantasy" editable={true} active={true}/>
-                    <Pill text="Romance" editable={true} active={false}/>
-                    <Pill text="Fiction" editable={true} active={false}/>
+            {interestData.map((category, index) => (
+                <div key={index}>
+                    <h5>{category.title}</h5>
+                    <div className="flex gap-1 flex-wrap">
+                        {category.interests.map((interest, index) => (
+                            <Pill text={interest} editable={editable} active={false} key={index}/>
+                        ))}
+                    </div>
                 </div>
-            </div>
-
-            <div>
-                <h5>Sport</h5>
-                <div className="flex gap-1 flex-wrap">
-                    <Pill text="Football" editable={true} active={false}/>
-                    <Pill text="Hockey" editable={true} active={false}/>
-                    <Pill text="Eating" editable={true} active={false}/>
-                </div>
-            </div>
-
-            <div>
-                <h5>Gaming</h5>
-                <div className="flex gap-1 flex-wrap">
-                    <Pill text="MMO" editable={true} active={false}/>
-                    <Pill text="RPG" editable={true} active={false}/>
-                    <Pill text="Sharks" editable={true} active={false}/>
-                </div>
-            </div>
+            ))}
 
         </div>
     )

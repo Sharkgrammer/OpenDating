@@ -55,14 +55,14 @@ export async function refresh() {
 }
 
 export async function checkStatus(status: number, data: any) {
-    if (status === 200) {
+    if (status == 200) {
 
-        if (data === "False") {
+        if (!data) {
             return false;
         }
 
         return data;
-    } else if (status === 401) {
+    } else if (status == 401) {
 
         let refreshed: boolean = await refresh();
 
@@ -78,7 +78,7 @@ export async function checkStatus(status: number, data: any) {
     }
 }
 
-export async function NetworkRequest(urlEnd: string, type: string = "GET", body: any = null, params: any = null, isJSON: boolean = true, skipLogin: boolean = false) {
+export async function NetworkRequest(urlEnd: string, type: string = "GET", body: any = null, params: any = null, isJSON: boolean = true, skipLogin: boolean = false, exit: boolean = false) {
     let url = `${import.meta.env.VITE_BACKEND_API}/${urlEnd}`;
 
     if (params === null) params = "{}";
@@ -129,8 +129,8 @@ export async function NetworkRequest(urlEnd: string, type: string = "GET", body:
         return false;
     }
 
-    if (!result) {
-        return await NetworkRequest(urlEnd, type, body, params, isJSON);
+    if (!result && !exit) {
+        return await NetworkRequest(urlEnd, type, body, params, isJSON, skipLogin, true);
     } else {
         return result;
     }

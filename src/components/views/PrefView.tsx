@@ -10,7 +10,7 @@ function PrefView() {
 
                 <h1>Who are you looking for?</h1>
 
-                <InterestPicker />
+                <InterestPicker editable={false}/>
 
             </div>
 

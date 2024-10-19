@@ -1,4 +1,4 @@
-import {useState} from "react";
+import {useEffect, useState} from "react";
 
 import NavBar from "./../components/nav/NavBar.tsx";
 import ChatView from "./../components/views/ChatView.tsx";
@@ -6,10 +6,11 @@ import FeedView from "./../components/views/FeedView.tsx";
 import ProfileView from "./../components/views/ProfileView.tsx";
 import PrefView from "./../components/views/PrefView.tsx";
 import StatView from "./../components/views/StatView.tsx";
+import * as network from "../assets/ts/network.ts";
 
 function MainPage() {
 
-    const [view, setView] = useState<Number>(0)
+    const [view, setView] = useState<Number>(3)
 
     function NavBarCallback(v: number) {
         setView(v);
