@@ -33,7 +33,7 @@ function ProfileView() {
                 <div>
                     <h1>Interests</h1>
 
-                    <InterestPicker/>
+                    <InterestPicker editable={true}/>
                 </div>
 
                 <div>
@@ -41,7 +41,7 @@ function ProfileView() {
 
                     <div className="grid grid-cols-3 gap-2 py-2">
                         {profileData.images.map((image, index) => (
-                            <img src={`${import.meta.env.VITE_BACKEND_BASE}${image}`} className="rounded-2xl" key={index}/>
+                            <img src={`${import.meta.env.VITE_BACKEND_MEDIA}${image}`} className="rounded-2xl" key={index}/>
                         ))}
                     </div>
                 </div>

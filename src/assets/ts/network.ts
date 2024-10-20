@@ -2,7 +2,7 @@ import * as utils from "./utility.ts";
 
 export async function login(user: any) {
 
-    const res: Response = await fetch(`${import.meta.env.VITE_BACKEND_API}/token/`, {
+    const res: Response = await fetch(`${import.meta.env.VITE_BACKEND_API}token/`, {
         "method": "POST",
         "headers": {
             'Content-Type': 'application/json'
@@ -31,7 +31,7 @@ export async function refresh() {
         refresh: utils.getRefreshKey()
     }
 
-    const res: Response = await fetch(`${import.meta.env.VITE_BACKEND_API}/token/refresh/`, {
+    const res: Response = await fetch(`${import.meta.env.VITE_BACKEND_API}token/refresh/`, {
         "method": "POST",
         "headers": {
             'Content-Type': 'application/json'
@@ -79,7 +79,7 @@ export async function checkStatus(status: number, data: any) {
 }
 
 export async function NetworkRequest(urlEnd: string, type: string = "GET", body: any = null, params: any = null, isJSON: boolean = true, skipLogin: boolean = false, exit: boolean = false) {
-    let url = `${import.meta.env.VITE_BACKEND_API}/${urlEnd}`;
+    let url = `${import.meta.env.VITE_BACKEND_API}${urlEnd}`;
 
     if (params === null) params = "{}";
     if (body === null) body = "{}";
