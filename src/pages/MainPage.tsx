@@ -9,7 +9,7 @@ import StatView from "./../components/views/StatView.tsx";
 
 function MainPage() {
 
-    const [view, setView] = useState<Number>(4)
+    const [view, setView] = useState<Number>(0)
 
     function NavBarCallback(v: number) {
         setView(v);
