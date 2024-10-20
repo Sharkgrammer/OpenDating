@@ -1,29 +1,41 @@
 import ViewWrapper from "../util/ViewWrapper.tsx";
-import square2 from "../../assets/img/square2.jpg"
-import square3 from "../../assets/img/square3.jpg"
-import square4 from "../../assets/img/square4.jpg"
 import ChatOverview from "../chat/ChatOverview.tsx";
 import RoundImage from "../util/RoundImage.tsx";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import ChatWindow from "../chat/ChatWindow.tsx";
+import {Like, LikeCombined, LikeCombinedDefault, LikeDefault} from "../../types/LikeCombined.tsx";
+import * as network from "../../assets/ts/network.ts";
 
 function ChatView() {
 
-    const [userID, setUserID] = useState("");
+    const [activeMessage, setActiveMessage] = useState<Like>(LikeDefault);
+    const [likeData, setLikeData] = useState<LikeCombined>(LikeCombinedDefault)
 
-    function openWindow(id: string) {
-        setUserID(id);
+    function openWindow(like: Like) {
+        setActiveMessage(like);
     }
 
     function closeWindow() {
-        setUserID("");
+        setActiveMessage(LikeDefault);
     }
+
+    async function getLikeData() {
+        let data: any = await network.NetworkRequest("like", "GET");
+
+        if (data) {
+            setLikeData(data);
+        }
+    }
+
+    useEffect(() => {
+        getLikeData().then();
+    }, [])
 
     return (
         <ViewWrapper>
 
-            {userID ? (
-                <ChatWindow title="Pam" image={square3} close={closeWindow}/>
+            {activeMessage.uid.length > 0 ? (
+                <ChatWindow like={activeMessage} close={closeWindow}/>
             ) : (
                 <div className="w-full h-full flex flex-col gap-2">
 
@@ -31,19 +43,12 @@ function ChatView() {
                     <div className="">
                         <h1>Who likes you!</h1>
                         <div className="w-full flex gap-2 py-2 text-center font-semibold">
-
-                            <div className="cursor-pointer">
-                                <RoundImage image={square2}/>
-                                <span>Jim</span>
-                            </div>
-                            <div className="cursor-pointer">
-                                <RoundImage image={square3}/>
-                                <span>Pam</span>
-                            </div>
-                            <div className="cursor-pointer">
-                                <RoundImage image={square4}/>
-                                <span>Micheal</span>
-                            </div>
+                            {likeData.likes.map((like, index) => (
+                                <div className="cursor-pointer" key={index}>
+                                    <RoundImage image={`${import.meta.env.VITE_BACKEND_MEDIA}${like.prof_image}`}/>
+                                    <span>{like.display_name}</span>
+                                </div>
+                            ))}
                         </div>
                     </div>
 
@@ -51,12 +56,9 @@ function ChatView() {
                         <h1 className="">Messages</h1>
 
                         <div className="w-full flex flex-col gap-2 py-2">
-                            <ChatOverview message="That's such a cool thing to say!" name="Pam" image={square3}
-                                          onClick={openWindow}/>
-                            <ChatOverview message="Hey how are you!" name="Micheal" image={square4}
-                                          onClick={openWindow}/>
-                            <ChatOverview message="I have lots to say!" name="Jim" image={square2}
-                                          onClick={openWindow}/>
+                            {likeData.messages.map((message, index) => (
+                                <ChatOverview message={message} key={index} onClick={openWindow}/>
+                            ))}
                         </div>
                     </div>
                 </div>

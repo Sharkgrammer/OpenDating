@@ -2,8 +2,9 @@ import {PaperAirplaneIcon} from "@heroicons/react/24/solid";
 import {ArrowLeftCircleIcon} from "@heroicons/react/24/outline";
 
 import RoundImage from "../util/RoundImage.tsx";
+import {Like} from "../../types/LikeCombined.tsx";
 
-function ChatWindow({image, title, close}: { title: string, image: string, close: any }) {
+function ChatWindow({like, close}: { like: Like, close: any }) {
 
     return (
         <div className="w-full h-full flex flex-col">
@@ -13,9 +14,9 @@ function ChatWindow({image, title, close}: { title: string, image: string, close
                 <ArrowLeftCircleIcon className="h-20 w-20 cursor-pointer text-primary hover:text-primary-dark"
                                      onClick={close}/>
 
-                <RoundImage image={image} size="h-20 w-20" className="cursor-pointer"/>
+                <RoundImage image={`${import.meta.env.VITE_BACKEND_MEDIA}${like.prof_image}`} size="h-20 w-20" className="cursor-pointer"/>
 
-                <h1 className="h-fit w-full border-0">{title}</h1>
+                <h1 className="h-fit w-full border-0">{like.display_name}</h1>
             </div>
 
 

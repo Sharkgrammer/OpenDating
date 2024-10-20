@@ -1,15 +1,21 @@
 import RoundImage from "../util/RoundImage.tsx";
+import {Like} from "../../types/LikeCombined.tsx";
 
-function ChatOverview({message, name, image, onClick}: { message: string, name: string, image: string, onClick:Function }) {
+function ChatOverview({message, onClick}: {
+    message: Like,
+    onClick: Function
+}) {
 
     return (
-        <div className="w-full h-fit flex gap-2 items-center p-1 select-none cursor-pointer bg-light rounded-xl hover:bg-light-dark" onClick={() => onClick("xxxxx")}>
+        <div
+            className="w-full h-fit flex gap-2 items-center p-1 select-none cursor-pointer bg-light rounded-xl hover:bg-light-dark"
+            onClick={() => onClick(message)}>
 
-            <RoundImage image={image}/>
+            <RoundImage image={`${import.meta.env.VITE_BACKEND_MEDIA}${message.prof_image}`}/>
 
             <div className="flex flex-col">
-                <span className="text-xl font-bold">{name}</span>
-                <span>{message}</span>
+                <span className="text-xl font-bold">{message.display_name}</span>
+                <span>{message.last_message}</span>
             </div>
 
         </div>
