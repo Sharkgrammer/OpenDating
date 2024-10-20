@@ -28,8 +28,6 @@ function LoginPage() {
             if (data) {
                 setLocalUID(data.uid);
 
-                console.log(data);
-
                 navigate("/", {replace: true});
             }
 

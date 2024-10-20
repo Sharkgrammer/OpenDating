@@ -70,7 +70,6 @@ export async function redirectToLogin() {
 }
 
 export async function logout() {
-    console.log("Logout ran");
     localStorage.clear()
 
     await redirectToLogin();
