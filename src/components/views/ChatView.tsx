@@ -5,6 +5,7 @@ import {useEffect, useState} from "react";
 import ChatWindow from "../chat/ChatWindow.tsx";
 import {Like, LikeCombined, LikeCombinedDefault, LikeDefault} from "../../types/LikeCombined.tsx";
 import * as network from "../../assets/ts/network.ts";
+import {getImage} from "../../assets/ts/utility.ts";
 
 function ChatView() {
 
@@ -45,7 +46,7 @@ function ChatView() {
                         <div className="w-full flex gap-2 py-2 text-center font-semibold">
                             {likeData.likes.map((like, index) => (
                                 <div className="cursor-pointer" key={index}>
-                                    <RoundImage image={`${import.meta.env.VITE_BACKEND_MEDIA}${like.prof_image}`}/>
+                                    <RoundImage image={getImage(like.prof_image)}/>
                                     <span>{like.display_name}</span>
                                 </div>
                             ))}

@@ -3,6 +3,7 @@ import InterestPicker from "../util/InterestPicker.tsx";
 import {User, UserDefault} from "../../types/User.tsx";
 import {useEffect, useState} from "react";
 import * as network from "../../assets/ts/network.ts";
+import {getImage} from "../../assets/ts/utility.ts";
 
 function ProfileView() {
 
@@ -41,7 +42,7 @@ function ProfileView() {
 
                     <div className="grid grid-cols-3 gap-2 py-2">
                         {profileData.images.map((image, index) => (
-                            <img src={`${import.meta.env.VITE_BACKEND_MEDIA}${image}`} className="rounded-2xl" key={index}/>
+                            <img src={getImage(image)} className="rounded-2xl" key={index}/>
                         ))}
                     </div>
                 </div>

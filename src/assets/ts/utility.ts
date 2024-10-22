@@ -74,3 +74,7 @@ export async function logout() {
 
     await redirectToLogin();
 }
+
+export function getImage(image: string) {
+    return `${import.meta.env.VITE_BACKEND_MEDIA}${image}`
+}
